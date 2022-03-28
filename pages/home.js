@@ -1,5 +1,6 @@
 import React from 'react'
 import Layout from '../components/layout'
+import { getStrapiURL } from '../utils'
 function Home({ globalpage, navigation, homeData }) {
 
   // console.log(navigation)
@@ -13,7 +14,7 @@ function Home({ globalpage, navigation, homeData }) {
 }
 export async function getServerSideProps(context) {
 
-  const res = await fetch(`http://localhost:1337/api/home`)
+  const res = await fetch(getStrapiURL('/home'))
   const data = await res.json()
 
   return {

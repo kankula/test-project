@@ -1,6 +1,4 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import { getStrapiURL } from '../utils'
 
 export default function Universals() {
 
@@ -10,7 +8,7 @@ export default function Universals() {
 }
 export async function getServerSideProps(context) {
     
-  const res = await fetch(`http://localhost:1337/api/new`)
+  const res = await fetch(getStrapiURL('/new'))
   const data = await res.json()
  
    if (data.data !== null) {

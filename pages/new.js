@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { getStrapiURL } from '../utils'
 const New = ({pageData}) => {
     //  console.log(pageData)
   
@@ -11,7 +12,7 @@ const New = ({pageData}) => {
 } 
 export async function getServerSideProps(context) {
     
-    const res = await fetch(`http://localhost:1337/api/new`)
+    const res = await fetch(getStrapiURL('/new'))
     const data = await res.json()
    
      if (data.data === null) {

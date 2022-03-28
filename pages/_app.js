@@ -1,6 +1,7 @@
 import '../styles/globals.css'
 import App from "next/app";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { getStrapiURL } from '../utils';
 
 function MyApp({ Component, pageProps }) {
   // console.log(pageProps)
@@ -19,8 +20,8 @@ MyApp.getInitialProps = async (appContext) => {
 
 
   const [globalRes, navigationRes] = await Promise.all([
-    fetch("http://localhost:1337/api/global?populate[footer][populate]=*"),
-    fetch("http://localhost:1337/api/navigation?populate[logo][populate]=*&populate[navmenu][populate]=*"),
+    fetch(getStrapiURL("/global?populate[footer][populate]=*")),
+    fetch(getStrapiURL("/navigation?populate[logo][populate]=*&populate[navmenu][populate]=*")),
   ])
   const globaldata = await globalRes.json()
   const navigation = await navigationRes.json()
