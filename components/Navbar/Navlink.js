@@ -1,11 +1,11 @@
 import Link from "next/link"
-const Navlink = ({href, label}) => {
+const Navlink = ({ href, label }) => {
     return (
-        <>
-        <Link href={href}>
-            <a>{label}</a>
-        </Link>
-        </>
+        <li className="nav-item">
+            <Link href={href}>
+                <a className="nav-link">{label}</a>
+            </Link>
+        </li>
     )
 }
 export default Navlink

@@ -1,20 +1,23 @@
 import React from 'react'
 import Layout from '../components/layout'
 import { getStrapiURL } from '../utils'
+import BlockManager from '../components/ฺBlockManager'
+
 function Home({ globalpage, navigation, homeData }) {
 
-  // console.log(navigation)
+  const blocks = homeData.attributes.blocks;
+  // console.log(blocks)
   return (
 
     <Layout globalpage={globalpage} navigation={navigation} >
-      <div>{homeData.attributes.title}</div>
+       {blocks && <BlockManager blocks={blocks} />}
     </Layout>
 
   )
 }
 export async function getServerSideProps(context) {
 
-  const res = await fetch(getStrapiURL('/home'))
+  const res = await fetch(getStrapiURL('/home?populate[blocks][populate]=*'))
   const data = await res.json()
 
   return {

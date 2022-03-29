@@ -16,7 +16,7 @@ const getNavComponent = ({ __component, ...rest }, index) => {
 };
 const NavManager = ({ navigation }) => {
     const menu = navigation.navmenu
-    return <div>{menu.map(getNavComponent)}</div>;
+    return <>{menu.map(getNavComponent)}</>;
 };
 
 
